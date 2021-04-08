@@ -1,6 +1,12 @@
 import React from "react";
 
 class ToDo extends React.Component {
+ constructor(props) {
+     super(props);
+     this.state = {
+         id: "",
+     }
+ }
  
     deleteHandler = () => {
         this.props.setToDos(this.props.toDos.filter(
@@ -8,15 +14,8 @@ class ToDo extends React.Component {
         ))
     };
 
-    completeHandler = () => {
-        this.props.setToDos(this.props.toDos.map(item => {
-            if(item.id === this.props.todo.id){
-                return {
-                    ...item, completed: !item.completed
-                }; 
-            }
-            return item;
-        }))
+    completeHandler = (id) => {
+        this.props.toggleComplete(id) ;
     }
 
   render() {
@@ -28,7 +27,7 @@ class ToDo extends React.Component {
           >
             {this.props.text}
           </li>
-          <button onClick={() => this.completeHandler()} className="complete-btn">
+          <button onClick={() => this.completeHandler(this.props.todo.id)} className="complete-btn">
             <i className="fas fa-check"></i>
           </button>
           <button onClick={() => this.deleteHandler()} className="trash-btn">

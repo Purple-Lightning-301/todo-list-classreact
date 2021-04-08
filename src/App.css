@@ -145,6 +145,7 @@ table {
   background: url("./assets/bg.jpg") no-repeat;
   opacity: 0.5;
   content: "";
+  background-size: cover;
 }
 .header {
   font-weight: bold;

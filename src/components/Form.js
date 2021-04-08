@@ -10,7 +10,6 @@ class Form extends React.Component {
     submitToDoHandler = (event) => {
         event.preventDefault();
         this.props.setToDos(
-             
              [...this.props.toDos, {text: this.props.inputText, completed: false, id: Math.random() *100}]
         );
         // this.props.setToDos(
